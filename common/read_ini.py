@@ -2,11 +2,6 @@ import os
 from configparser import ConfigParser
 
 
-# ConfigParser：是用来读取配置文件的的类库，配置文件的格式跟window下的ini配置文件类似，可以包含一个或多个节(section)
-#               每个节可以有多个参数或称为选项(键=值)。使用配置文件的好处是不用把程序写死，可以使程序更加灵活。
-# 常用函数方法：1.read(文件名)---读取配置文件，直接读取ini文件内容
-#             2.sections()---读取ini文件内的所有节（section）,以列表形式返回
-#             3.options(section)---获取指定节点下的所有选项（option）,以列表形式返回
 class ReadIni:
     def __init__(self):
         self.base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,10 +37,6 @@ class ReadIni:
     def get_screenshot_file_path(self):
         return os.path.join(self.base_path, self.config.get("Path", "screenshot_path"))
 
-    # 获取csv文件路径
-    def get_csv_file_path(self):
-        return os.path.join(self.base_path, self.config.get("Path", "csv_path"))
-
     # 获取excel文件路径
     def get_excel_file_path(self):
         return os.path.join(self.base_path, self.config.get("Path", "excel_path"))
@@ -58,25 +49,9 @@ class ReadIni:
     def get_json_file_path(self):
         return os.path.join(self.base_path, self.config.get("Path", "json_path"))
 
-    # 获取txt文件路径
-    def get_txt_file_path(self):
-        return os.path.join(self.base_path, self.config.get("Path", "txt_path"))
-
-    # 获取xml文件路径
-    def get_xml_file_path(self):
-        return os.path.join(self.base_path, self.config.get("Path", "xml_path"))
-
     # 获取yaml文件路径
     def get_yaml_file_path(self):
         return os.path.join(self.base_path, self.config.get("Path", "yaml_path"))
-
-    # 保存登录页面截屏图片的路径
-    def save_login_screenshot_path(self):
-        return os.path.join(self.base_path, self.config.get("Path", "login_screenshot_path"))
-
-    # 保存登录的验证码图片的路径
-    def save_verify_img_path(self):
-        return os.path.join(self.base_path, self.config.get("Path", "verify_img_path"))
 
 
 if __name__ == '__main__':
@@ -84,12 +59,7 @@ if __name__ == '__main__':
     print(read.get_log_file_path())
     print(read.get_report_file_path())
     print(read.get_screenshot_file_path())
-    print(read.get_csv_file_path())
     print(read.get_excel_file_path())
     print(read.get_json_file_path())
-    print(read.get_txt_file_path())
-    print(read.get_xml_file_path())
     print(read.get_yaml_file_path())
     print(read.get_sheet_name())
-    print(read.save_login_screenshot_path())
-    print(read.save_verify_img_path())

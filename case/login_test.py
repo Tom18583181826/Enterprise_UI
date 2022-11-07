@@ -1,6 +1,5 @@
 import time
-import unittest
-from parameterized import parameterized
+import pytest
 from common.get_log import GetLog
 from common.read_excel import ReadExcel
 from common.read_ini import ReadIni
@@ -33,28 +32,26 @@ def get_failed_data():
     return failed_list
 
 
-class BaiDuLoginTest(unittest.TestCase):
-    # 获取当前系统时间
+class TestLogin:
     now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
 
-    # 在每条测试用例之前执行
     def setUp(self):
-        self.login_test = LoginPage("Chrome", "https://vmall.vmall888.com")
+        self.login_test = LoginPage("Chrome",
+                                    "http://192.168.0.139:18091/pbf_company/index.html#/login?redirect=%2Fhome")
 
-    # 在每条测试用例之后执行
     def tearDown(self):
         self.login_test.quit()
 
     # 测试登录成功的用例
-    @parameterized.expand(get_success_data())
-    def test_success(self, case_id, case_name, params, expect):
+    @pytest.mark.parametrize("case_id,case_name,params,expect", get_success_data())
+    def test_login_success(self, case_id, case_name, params, expect):
         try:
             username = params["username"]
             password = params["password"]
             verify_code = params["verify_code"]
             self.login_test.login(username, password, verify_code)
-            success_text = self.login_test.get_success()
-            self.assertEqual(expect, success_text, "预期结果与实际结果不一致！")
+            success_text = self.login_test.get_login_success()
+            self.Equal(expect, success_text, "预期结果与实际结果不一致！")
         except AssertionError:
             # 用例执行失败执行截图操作
             self.login_test.get_screenshot(
@@ -68,7 +65,7 @@ class BaiDuLoginTest(unittest.TestCase):
             pass
 
     # 测试登陆失败的用例
-    @parameterized.expand(get_failed_data())
+    @pytest.mark.parametrize("case_id, case_name, params, expect", get_failed_data())
     def test_fail(self, case_id, case_name, params, expect):
         try:
             username = params["username"]
@@ -92,4 +89,4 @@ class BaiDuLoginTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main(verbosity=2)
+    pytest.main()

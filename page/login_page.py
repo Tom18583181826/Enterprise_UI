@@ -1,4 +1,3 @@
-# Page Object的设计思想是把元素定位与元素操作进行分层
 from time import sleep
 from common.base import Base
 from common.read_ini import ReadIni
@@ -12,35 +11,33 @@ class LoginPage(Base):
     yaml_data = read_yaml.read_yaml_data(read_path)
 
     def login(self, username, password, verify_code):
-        # 点击账号登录
-        self.click(self.yaml_data["Login"]["ACCOUNTLOGIN"])
         # 输入用户名
-        self.send_keys(self.yaml_data["Login"]["USERNAME"], username)
+        self.send_keys(self.yaml_data["login"]["login_name"], username)
         # 输入密码
-        self.send_keys(self.yaml_data["Login"]["PWD"], password)
+        self.send_keys(self.yaml_data["login"]["password"], password)
         # 输入验证码
-        self.send_keys(self.yaml_data["Login"]["VERIFY"], verify_code)
+        self.send_keys(self.yaml_data["login"]["verify_code"], verify_code)
         # 点击登录按钮
-        self.click(self.yaml_data["Login"]["SUBMIT"])
+        self.click(self.yaml_data["login"]["submit"])
         sleep(10)
 
-    # 登录成功后的操作
-    def get_success(self):
-        # # 点击个人中心
-        # self.click(self.yamldata["Login"]["USERBUTTON"])
-        # # 获取当前所有句柄
-        # handles = self.wd.window_handles
-        # # 进入第二个窗口句柄
-        # self.wd.switch_to.window(handles[1])
-        # 获取成功文本
-        success_text = self.get_text(self.yaml_data["Login"]["SUCCESSTEXT"])
+    def get_login_success(self):
+        success_text = self.get_text(self.yaml_data["login"]["login_success"])
         return success_text
 
-    # 获取登录失败后的文本提示
-    def get_failed_text(self):
-        return self.get_text(self.yaml_data["Login"]["FAILED"])
+    # 用户名为空导致登录失败
+    def get_namenull_fail(self):
+        return self.get_text(self.yaml_data["login"]["username_null"])
+
+    # 密码为空导致登录失败
+    def get_passwordnull_fail(self):
+        return self.get_text(self.yaml_data["login"]["password_null"])
+
+    # 验证码为空导致登录失败
+    def get_verifynull_fail(self):
+        return self.get_text(self.yaml_data["login"]["verify_code_null"])
 
 
 if __name__ == '__main__':
-    logintest = LoginPage('Chrome', "https://vmall.vmall888.com")
-    logintest.login("9527", "a123456", "1111")
+    logintest = LoginPage('Chrome', "http://192.168.0.139:18091/pbf_company/index.html#/login?redirect=%2Fhome")
+    logintest.login("12138001", "123456", "111111")

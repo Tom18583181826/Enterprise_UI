@@ -1,14 +1,50 @@
 {
-  "ParamsSuccess": {
-    "username": "9527",
-    "password": "a123456",
-    "verify_code": "1111"
+  "login_success_p": {
+    "username": "12138001",
+    "password": "123456",
+    "verify_code": "111111"
   },
-  "ExpectSuccess": "9527",
-  "ParamsFail": {
+  "login_success_e": {
+    "username": "12138001"
+  },
+  "username_error_p": {
     "username": "9527",
     "password": "123456",
-    "verify_code": "1111"
+    "verify_code": "111111"
   },
-  "ExpectFail": "密码输入错误"
+  "username_error_e": {
+    "username_error": "用户名不存在"
+  },
+  "username_null_p": {
+    "username": "",
+    "password": "123456",
+    "verify_code": "111111"
+  },
+  "username_null_e": {
+    "username_null": "请输入账号"
+  },
+  "password_error_p": {
+    "username": "12138001",
+    "password": "12345",
+    "verify_code": "111111"
+  },
+  "password_error_e": {
+    "password_error": "密码不正确"
+  },
+  "password_null_p": {
+    "username": "12138001",
+    "password": "",
+    "verify_code": "123456"
+  },
+  "password_null_e": {
+    "password_null": "请输入登录密码"
+  },
+  "verify_null_p": {
+    "username": "12138001",
+    "password": "123456",
+    "verify_code": ""
+  },
+  "verify_null_e": {
+    "verify_null": "请输入验证码"
+  }
 }

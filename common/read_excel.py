@@ -1,5 +1,4 @@
 from openpyxl import load_workbook
-# openpyxl是Python的一个第三方库，用于处理excel表格
 from common.read_ini import ReadIni
 from common.read_json import ReadJson
 from data.excel_column import ExcelColumn
