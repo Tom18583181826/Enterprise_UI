@@ -26,18 +26,18 @@ class LoginPage(Base):
         return success_text
 
     # 用户名为空导致登录失败
-    def get_namenull_fail(self):
+    def get_name_null_fail(self):
         return self.get_text(self.yaml_data["login"]["username_null"])
 
     # 密码为空导致登录失败
-    def get_passwordnull_fail(self):
+    def get_password_null_fail(self):
         return self.get_text(self.yaml_data["login"]["password_null"])
 
     # 验证码为空导致登录失败
-    def get_verifynull_fail(self):
+    def get_verify_null_fail(self):
         return self.get_text(self.yaml_data["login"]["verify_code_null"])
 
 
 if __name__ == '__main__':
-    logintest = LoginPage('Chrome', "http://192.168.0.139:18091/pbf_company/index.html#/login?redirect=%2Fhome")
-    logintest.login("12138001", "123456", "111111")
+    login_test = LoginPage('Chrome', "http://192.168.0.139:18091/pbf_company/index.html#/login?redirect=%2Fhome")
+    login_test.login("12138001", "123456", "111111")

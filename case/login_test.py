@@ -51,7 +51,8 @@ class TestLogin:
             verify_code = params["verify_code"]
             self.login_test.login(username, password, verify_code)
             success_text = self.login_test.get_login_success()
-            self.Equal(expect, success_text, "预期结果与实际结果不一致！")
+            if expect != success_text:
+                raise AssertionError
         except AssertionError:
             # 用例执行失败执行截图操作
             self.login_test.get_screenshot(
@@ -66,14 +67,15 @@ class TestLogin:
 
     # 测试登陆失败的用例
     @pytest.mark.parametrize("case_id, case_name, params, expect", get_failed_data())
-    def test_fail(self, case_id, case_name, params, expect):
+    def test_login_fail(self, case_id, case_name, params, expect):
         try:
             username = params["username"]
             password = params["password"]
             verify_code = params["verify_code"]
             self.login_test.login(username, password, verify_code)
-            fail_text = self.login_test.get_failed_text()
-            self.assertEqual(expect, fail_text, "预期结果与实际结果不一致！")
+            fail_text = self.login_test.get_namenull_fail()
+            if expect != fail_text:
+                raise AssertionError
         except AssertionError:
             # 用例执行失败执行截图操作
             self.login_test.get_screenshot(
