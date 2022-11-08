@@ -1,9 +1,0 @@
-login:
-  login_name: n,loginName
-  password: n,loginPwd
-  verify_code: n,code
-  submit: x,//*[@id="app"]/div/form/button
-  login_success: x,//*[@id="app"]/div/div[1]/div[1]/div/div[2]/div[1]/div[2]
-  username_null: x,//*[@id="app"]/div/form/div[3]/div/div[2]
-  password_null: x,//*[@id="app"]/div/form/div[4]/div/div[2]
-  verify_code_null: x,//*[@id="app"]/div/form/div[5]/div[1]/div/div[2]

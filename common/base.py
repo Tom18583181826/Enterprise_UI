@@ -1,10 +1,11 @@
 import os
 import random
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 
 class Base:
@@ -175,6 +176,7 @@ class Base:
     def get_page_url(self):
         return self.wd.current_url
 
+    # 上传文件
     def up_file(self, selector, up_file_path):
         return self.locator_element(selector).send_keys(up_file_path)
 

@@ -31,6 +31,9 @@ class ReadIni:
     def get_yaml_file_path(self):
         return os.path.join(self.base_path, self.config.get("Path", "yaml_path"))
 
+    def get_up_image_path(self):
+        return os.path.join(self.base_path, self.config.get("Path", "up_image"))
+
 
 if __name__ == '__main__':
     read = ReadIni()
@@ -41,3 +44,4 @@ if __name__ == '__main__':
     print(read.get_json_file_path())
     print(read.get_yaml_file_path())
     print(read.get_sheet_name())
+    print(read.get_up_image_path())

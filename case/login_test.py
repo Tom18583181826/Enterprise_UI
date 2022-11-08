@@ -35,11 +35,11 @@ def get_failed_data():
 class TestLogin:
     now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
 
-    def setUp(self):
+    def setup(self):
         self.login_test = LoginPage("Chrome",
                                     "http://192.168.0.139:18091/pbf_company/index.html#/login?redirect=%2Fhome")
 
-    def tearDown(self):
+    def teardown(self):
         self.login_test.quit()
 
     # 测试登录成功的用例
@@ -51,43 +51,47 @@ class TestLogin:
             verify_code = params["verify_code"]
             self.login_test.login(username, password, verify_code)
             success_text = self.login_test.get_login_success()
-            if expect != success_text:
-                raise AssertionError
+            assert expect == success_text
         except AssertionError:
-            # 用例执行失败执行截图操作
             self.login_test.get_screenshot(
                 ReadIni().get_screenshot_file_path() + "screenshot_{}.png".format(self.now_time))
-            # 实例化打印日志对象
             log_obj = GetLog().get_log(ReadIni().get_log_file_path() + "login{}.log".format(self.now_time))
-            # 打印日志
             log_obj.error("用例{}---{}---执行失败！".format(case_id, case_name))
             raise AssertionError("用例{}---{}---执行失败！".format(case_id, case_name))
         finally:
             pass
 
-    # 测试登陆失败的用例
-    @pytest.mark.parametrize("case_id, case_name, params, expect", get_failed_data())
-    def test_login_fail(self, case_id, case_name, params, expect):
-        try:
-            username = params["username"]
-            password = params["password"]
-            verify_code = params["verify_code"]
-            self.login_test.login(username, password, verify_code)
-            fail_text = self.login_test.get_namenull_fail()
-            if expect != fail_text:
-                raise AssertionError
-        except AssertionError:
-            # 用例执行失败执行截图操作
-            self.login_test.get_screenshot(
-                ReadIni().get_screenshot_file_path() + "screenshot_{}.png".format(self.now_time))
-            # 实例化打印日志对象
-            log_obj = GetLog().get_log(ReadIni().get_log_file_path() + "login{}.log".format(self.now_time))
-            # 打印日志
-            log_obj.error("用例{}---{}---执行失败！".format(case_id, case_name))
-            # 使用raise抛出一个指定异常
-            raise AssertionError("用例{}---{}---执行失败！".format(case_id, case_name))
-        finally:
-            pass
+    # # 测试登陆失败的用例
+    # @pytest.mark.parametrize("case_id, case_name, params, expect", get_failed_data())
+    # def test_login_fail(self, case_id, case_name, params, expect):
+    #     try:
+    #         username = params["username"]
+    #         password = params["password"]
+    #         verify_code = params["verify_code"]
+    #         self.login_test.login(username, password, verify_code)
+    #         if expect == "用户名不存在":
+    #             fail_text = self.login_test.switch_to_alert("text")
+    #             assert expect == fail_text
+    #         if expect == "请输入账号":
+    #             fail_text = self.login_test.get_name_null_fail()
+    #             assert expect == fail_text
+    #         if expect == "密码不正确":
+    #             fail_text = self.login_test.switch_to_alert("text")
+    #             assert expect == fail_text
+    #         if expect == "请输入登录密码":
+    #             fail_text = self.login_test.get_password_null_fail()
+    #             assert expect == fail_text
+    #         if expect == "请输入验证码":
+    #             fail_text = self.login_test.get_verify_null_fail()
+    #             assert expect == fail_text
+    #     except AssertionError:
+    #         self.login_test.get_screenshot(
+    #             ReadIni().get_screenshot_file_path() + "screenshot_{}.png".format(self.now_time))
+    #         log_obj = GetLog().get_log(ReadIni().get_log_file_path() + "login{}.log".format(self.now_time))
+    #         log_obj.error("用例{}---{}---执行失败！".format(case_id, case_name))
+    #         raise AssertionError("用例{}---{}---执行失败！".format(case_id, case_name))
+    #     finally:
+    #         pass
 
 
 if __name__ == '__main__':

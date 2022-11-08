@@ -1,0 +1,36 @@
+login:
+  login_name: n,loginName
+  password: n,loginPwd
+  verify_code: n,code
+  submit: x,//*[@id="app"]/div/form/button
+  login_success: x,//*[@id="app"]/div/div[1]/div[1]/div/div[2]/div[1]/div[2]
+  username_null: x,//*[@id="app"]/div/form/div[3]/div/div[2]
+  password_null: x,//*[@id="app"]/div/form/div[4]/div/div[2]
+  verify_code_null: x,//*[@id="app"]/div/form/div[5]/div[1]/div/div[2]
+
+home:
+  address_book: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[1]/div/div/div/span
+  benefit_sign_up_records: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[2]/div/div[1]/div/span
+  gaode_take_taxi: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[2]/div/div[2]/div/span
+  points_Sign_in: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[2]/div/div[3]/div/span
+  point_sweepstakes: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[2]/div/div[4]/div/span
+  walking: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[3]/div/div[1]/div/span
+  announcement_management: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[3]/div/div[2]/div/span
+  trade_union_mailbox: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[3]/div/div[3]/div/span
+  points_issuance_record: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[3]/div/div[4]/div/span
+  enterprise_cloud_drive: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[3]/div/div[5]/div/span
+  event_registration: x, //*[@id="app"]/div/section/div/section/main/div[3]/div[3]/div/div[6]/div/span
+  employee_care: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[3]/div/div[7]/div/span
+  wall_of_honor: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[3]/div/div[8]/div/span
+  breakout_quiz: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[4]/div/div[1]/div/span
+  employee_research: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[4]/div/div[2]/div/span
+  event_voting: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[4]/div/div[3]/div/span
+  interest_groups: x,//*[@id="app"]/div/section/div/section/main/div[3]/div[4]/div/div[4]/div/span
+
+interest_group:
+  create_group: x,//*[@id="app"]/div/section/div/div[2]/div/div[2]/div[2]/button[1]/span
+
+create_group:
+  group_name: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[1]/div/div/input
+  cover_image: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[2]/div/div/div/div/div/div/div/div[1]
+  group_introduction: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[3]/div/div/textarea
