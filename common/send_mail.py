@@ -1,6 +1,6 @@
 import smtplib
-from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from common.read_ini import ReadIni
 
 
@@ -9,7 +9,6 @@ class SendMail(object):
         try:
             # 1.配置邮箱服务器信息
             host = "smtp.qq.com"
-
             sender = ""
             auth_code = ""
             receivers = ""
@@ -43,7 +42,7 @@ class SendMail(object):
 
 
 if __name__ == '__main__':
-    read = ReadIni()
-    report_file_path = read.get_report_file_path()
+    read_ini = ReadIni()
+    report_file_path = read_ini.get_report_file_path()
     test_send = SendMail()
     test_send.send_mail(report_file_path)

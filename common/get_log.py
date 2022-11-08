@@ -1,7 +1,7 @@
 import sys
-from logging import Logger
-from logging import Formatter
 from logging import FileHandler
+from logging import Formatter
+from logging import Logger
 from logging import StreamHandler
 
 

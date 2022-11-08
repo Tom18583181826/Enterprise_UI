@@ -1,6 +1,5 @@
 import os
 import random
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -16,8 +15,6 @@ class Base:
             self.wd = webdriver.Firefox()
         elif browser_type == "Edge":
             self.wd = webdriver.Edge()
-        elif browser_type == "Opera":
-            self.wd = webdriver.Opera()
         else:
             raise TypeError("浏览器类型错误，请输入正确的浏览器类型！！！")
         self.wd.get(url)
@@ -180,34 +177,34 @@ class Base:
     def up_file(self, selector, up_file_path):
         return self.locator_element(selector).send_keys(up_file_path)
 
-    # 文件下载,WebDriver允许我们设置默认的文件下载路径，不同的浏览器设置方式不同
-    def download_file(self, browser_type, selector):
-        if browser_type == "Chrome":
-            chrome = webdriver.ChromeOptions
-            prefs = {'profile.default_content_settings.popups': 0, 'download.default_directory': os.getcwd()}
-            chrome.add_experimental_option('prefs', prefs)
-            self.wd = webdriver.Chrome(chrome_options=chrome)
-            self.locator_element(selector).click()
-        elif browser_type == "Firefox":
-            firefox = webdriver.FirefoxProfile()
-            firefox.set_preference('browser.download.folderList', 2)
-            firefox.set_preference('browser.download.dir', os.getcwd())
-            firefox.set_preference('browser.helperApps.neverAsk.saveToDisk', 'binary/octet-stream')
-            self.wd = webdriver.Firefox(firefox_profile=firefox)
-            self.locator_element(selector).click()
+    # # 文件下载,WebDriver允许我们设置默认的文件下载路径，不同的浏览器设置方式不同
+    # def download_file(self, browser_type, selector):
+    #     if browser_type == "Chrome":
+    #         chrome = webdriver.ChromeOptions
+    #         prefs = {'profile.default_content_settings.popups': 0, 'download.default_directory': os.getcwd()}
+    #         chrome.add_experimental_option('prefs', prefs)
+    #         self.wd = webdriver.Chrome(chrome_options=chrome)
+    #         self.locator_element(selector).click()
+    #     elif browser_type == "Firefox":
+    #         firefox = webdriver.FirefoxProfile()
+    #         firefox.set_preference('browser.download.folderList', 2)
+    #         firefox.set_preference('browser.download.dir', os.getcwd())
+    #         firefox.set_preference('browser.helperApps.neverAsk.saveToDisk', 'binary/octet-stream')
+    #         self.wd = webdriver.Firefox(firefox_profile=firefox)
+    #         self.locator_element(selector).click()
 
     # 调用JavaScript，可以实现浏览器滚动条的拖动和textarea文本框的输入等操作
     def transfer_js(self, js, args=None):
         self.wd.execute_script(js, args)
 
     # 处理H5视频播放
-    def video(self, selector, type):
+    def video(self, selector, video_type):
         video = self.locator_element(selector)
-        if type == "play":
+        if video_type == "play":
             self.wd.execute_script("arguments[0].play()", video)
-        elif type == "pause":
+        elif video_type == "pause":
             self.wd.execute_script("arguments[0].pause()", video)
-        elif type == "load":
+        elif video_type == "load":
             self.wd.execute_script("arguments[0].load()", video)
         else:
             self.wd.execute_script("return arguments[0].currentSrc;", video)

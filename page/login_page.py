@@ -1,15 +1,17 @@
-from time import sleep
 from common.base import Base
 from common.read_ini import ReadIni
 from common.read_yaml import ReadYaml
 
 
 class LoginPage(Base):
-    read_ini = ReadIni()
-    read_path = read_ini.get_yaml_file_path()
-    read_yaml = ReadYaml()
-    yaml_data = read_yaml.read_yaml_data(read_path)
+    def __init__(self, browser_type, url):
+        super().__init__(browser_type, url)
+        self.read_ini = ReadIni()
+        self.yaml_path = self.read_ini.get_yaml_file_path()
+        self.read_yaml = ReadYaml()
+        self.yaml_data = self.read_yaml.read_yaml_data(self.yaml_path)
 
+    # 登录流程
     def login(self, username, password, verify_code):
         # 输入用户名
         self.send_keys(self.yaml_data["login"]["login_name"], username)
@@ -19,8 +21,8 @@ class LoginPage(Base):
         self.send_keys(self.yaml_data["login"]["verify_code"], verify_code)
         # 点击登录按钮
         self.click(self.yaml_data["login"]["submit"])
-        sleep(10)
 
+    # 登陆成功
     def get_login_success(self):
         success_text = self.get_text(self.yaml_data["login"]["login_success"])
         return success_text
@@ -40,4 +42,4 @@ class LoginPage(Base):
 
 if __name__ == '__main__':
     login_test = LoginPage('Chrome', "http://192.168.0.139:18091/pbf_company/index.html#/login?redirect=%2Fhome")
-    login_test.login("12138001", "123456", "111111")
+    login_test.login("12138002", "123456", "111111")

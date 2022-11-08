@@ -1,0 +1,47 @@
+{
+  "login": {
+    "login_success_p": {
+      "username": "12138002",
+      "password": "123456",
+      "verify_code": "111111"
+    },
+    "login_success_e": "12138002",
+    "username_error_p": {
+      "username": "9527",
+      "password": "123456",
+      "verify_code": "111111"
+    },
+    "username_error_e": "用户名不存在",
+    "username_null_p": {
+      "username": "",
+      "password": "123456",
+      "verify_code": "111111"
+    },
+    "username_null_e": "请输入账号",
+    "password_error_p": {
+      "username": "12138002",
+      "password": "12345",
+      "verify_code": "111111"
+    },
+    "password_error_e": "密码不正确",
+    "password_null_p": {
+      "username": "12138002",
+      "password": "",
+      "verify_code": "123456"
+    },
+    "password_null_e": "请输入登录密码",
+    "verify_null_p": {
+      "username": "12138002",
+      "password": "123456",
+      "verify_code": ""
+    },
+    "verify_null_e": "请输入验证码"
+  },
+  "create_interest_group": {
+    "create_interest_group_success_p": {
+      "group_name": "这里是小组名称文本内容",
+      "group_introduction": "这里是小组介绍文本内容"
+    },
+    "create_interest_group_success_e": "新建小组成功"
+  }
+}

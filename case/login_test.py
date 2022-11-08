@@ -1,5 +1,6 @@
 import time
 import pytest
+from common.get_json_value_by_key import GetJsonValue
 from common.get_log import GetLog
 from common.read_excel import ReadExcel
 from common.read_ini import ReadIni
@@ -23,7 +24,7 @@ def get_success_data():
 def get_failed_data():
     read = ReadExcel()
     failed_list = []
-    for row in range(3, read.get_row_count() + 1):
+    for row in range(3, 8):
         case_id = read.get_case_id(row)
         case_name = read.get_case_name(row)
         params = read.get_case_params_value(row)
@@ -46,12 +47,12 @@ class TestLogin:
     @pytest.mark.parametrize("case_id,case_name,params,expect", get_success_data())
     def test_login_success(self, case_id, case_name, params, expect):
         try:
-            username = params["username"]
-            password = params["password"]
-            verify_code = params["verify_code"]
+            username = GetJsonValue().get_json_value_by_key(params, "username")
+            password = GetJsonValue().get_json_value_by_key(params, "password")
+            verify_code = GetJsonValue().get_json_value_by_key(params, "verify_code")
             self.login_test.login(username, password, verify_code)
             success_text = self.login_test.get_login_success()
-            assert expect == success_text
+            assert expect[0] == success_text
         except AssertionError:
             self.login_test.get_screenshot(
                 ReadIni().get_screenshot_file_path() + "screenshot_{}.png".format(self.now_time))
@@ -65,25 +66,25 @@ class TestLogin:
     # @pytest.mark.parametrize("case_id, case_name, params, expect", get_failed_data())
     # def test_login_fail(self, case_id, case_name, params, expect):
     #     try:
-    #         username = params["username"]
-    #         password = params["password"]
-    #         verify_code = params["verify_code"]
+    #         username = GetJsonValue().get_json_value_by_key(params, "username")
+    #         password = GetJsonValue().get_json_value_by_key(params, "password")
+    #         verify_code = GetJsonValue().get_json_value_by_key(params, "verify_code")
     #         self.login_test.login(username, password, verify_code)
     #         if expect == "用户名不存在":
     #             fail_text = self.login_test.switch_to_alert("text")
-    #             assert expect == fail_text
+    #             assert expect[0] == fail_text
     #         if expect == "请输入账号":
     #             fail_text = self.login_test.get_name_null_fail()
-    #             assert expect == fail_text
+    #             assert expect[0] == fail_text
     #         if expect == "密码不正确":
     #             fail_text = self.login_test.switch_to_alert("text")
-    #             assert expect == fail_text
+    #             assert expect[0] == fail_text
     #         if expect == "请输入登录密码":
     #             fail_text = self.login_test.get_password_null_fail()
-    #             assert expect == fail_text
+    #             assert expect[0] == fail_text
     #         if expect == "请输入验证码":
     #             fail_text = self.login_test.get_verify_null_fail()
-    #             assert expect == fail_text
+    #             assert expect[0] == fail_text
     #     except AssertionError:
     #         self.login_test.get_screenshot(
     #             ReadIni().get_screenshot_file_path() + "screenshot_{}.png".format(self.now_time))
