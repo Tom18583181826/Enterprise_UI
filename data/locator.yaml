@@ -5,7 +5,9 @@ login:
   submit: x,//*[@id="app"]/div/form/button
   login_success: x,//*[@id="app"]/div/div[1]/div[1]/div/div[2]/div[1]/div[2]
   username_null: x,//*[@id="app"]/div/form/div[3]/div/div[2]
+  username_error: x,/html/body/div[3]/p
   password_null: x,//*[@id="app"]/div/form/div[4]/div/div[2]
+  password_error: x,/html/body/div[3]/p
   verify_code_null: x,//*[@id="app"]/div/form/div[5]/div[1]/div/div[2]
 
 home:
@@ -29,8 +31,36 @@ home:
 
 interest_group:
   create_group: x,//*[@id="app"]/div/section/div/div[2]/div/div[2]/div[2]/button[1]/span
+  batch_delete: x,//*[@id="app"]/div/section/div/div[2]/div/div[2]/div[2]/button[2]/span
+  name_query: x,//*[@id="app"]/div/section/div/div[2]/div/div[2]/div[1]/div[1]/input
+  status_query: x,//*[@id="app"]/div/section/div/div[2]/div/div[2]/div[1]/div[2]/div/input
+  enable_status: x,/html/body/div[2]/div[1]/div[1]/ul/li[1]/span
+  disable_status: x,/html/body/div[2]/div[1]/div[1]/ul/li[2]/span
 
-create_group:
+create_interest_group:
   group_name: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[1]/div/div/input
   cover_image: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[2]/div/div/div/div/div/div/div/div[1]
   group_introduction: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[3]/div/div/textarea
+  all_departments: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[4]/div/div/div[1]/label[1]/span[2]
+  designated_department: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[4]/div/div/div[1]/label[2]/span[2]
+  select_department: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[4]/div/div/div[2]
+  research_and_development_department: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[4]/div/div/div[4]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]/label
+  sales_department: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[4]/div/div/div[4]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div/div/div[2]/div[2]/div/div[2]/label
+  select_department_submit: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[4]/div/div/div[4]/div/div/div[3]/span/button[2]/span
+  designated_employees: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[4]/div/div/div[1]/label[3]/span[2]
+  select_employee: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[4]/div/div/div[2]/span
+  select_employee_9527015: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[4]/div/div/div[4]/div/div[2]/div/div[1]/div/div[1]/section/section/div/div[3]/table/tbody/tr[1]/td[1]/div/label/span/span
+  select_employee_9527014: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[4]/div/div/div[4]/div/div[2]/div/div[1]/div/div[1]/section/section/div/div[3]/table/tbody/tr[2]/td[1]/div/label/span/span
+  join_employee: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[4]/div/div/div[4]/div/div[2]/div/div[1]/div/div[2]/div[2]/button/span
+  select_employee_submit: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[4]/div/div/div[4]/div/div[2]/div/div[2]/button[2]/span
+  admins: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[5]/div/div[1]/div[2]/button
+  select_admins_type1: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[5]/div/div[2]/div[3]/div/div[2]/div/div[1]/div/div[1]/section/section/div/div[3]/table/tbody/tr[1]/td[1]/div/label/span/span
+  select_admins_type2: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[5]/div/div[2]/div[3]/div/div[2]/div/div[1]/div/div[1]/section/section/div/div[3]/table/tbody/tr[1]/td[1]/div/label/span/span
+  select_admins_type3: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[5]/div/div[2]/div[3]/div/div[2]/div/div[1]/div/div[1]/section/section/div/div[3]/table/tbody/tr[1]/td[1]/div/label/span/span
+  join_admins: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[5]/div/div[2]/div[3]/div/div[2]/div/div[1]/div/div[2]/div[2]/button/span
+  select_admins_submit: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[5]/div/div[2]/div[3]/div/div[2]/div/div[2]/button[2]/span
+  submit: x,//*[@id="app"]/div/section/div/div/div/div[3]/button[2]/span
+  create_group_success: x,/html/body/div[3]/p
+  group_name_null: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[1]/div/div[2]
+  cover_image_null: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[2]/div/div[2]
+  introduction_null: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[3]/div/div[2]

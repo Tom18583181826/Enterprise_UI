@@ -1,5 +1,4 @@
 import json
-
 from common.read_ini import ReadIni
 
 

@@ -10,7 +10,7 @@ class ReadYaml:
 
 if __name__ == '__main__':
     read_ini = ReadIni()
-    yamlpath = read_ini.get_yaml_file_path()
+    yaml_path = read_ini.get_yaml_file_path()
     read_yaml = ReadYaml()
-    yaml_data = read_yaml.read_yaml_data(yamlpath)
+    yaml_data = read_yaml.read_yaml_data(yaml_path)
     print(yaml_data)

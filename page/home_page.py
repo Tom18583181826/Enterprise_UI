@@ -1,13 +1,15 @@
-from common.base import Base
 from common.read_ini import ReadIni
 from common.read_yaml import ReadYaml
+from page.login_page import LoginPage
 
 
-class HomePage(Base):
-    read_ini = ReadIni()
-    read_path = read_ini.get_yaml_file_path()
-    read_yaml = ReadYaml()
-    yaml_data = read_yaml.read_yaml_data(read_path)
+class HomePage(LoginPage):
+    def __init__(self, browser_type, url):
+        super().__init__(browser_type, url)
+        self.read_ini = ReadIni()
+        self.yaml_path = self.read_ini.get_yaml_file_path()
+        self.read_yaml = ReadYaml()
+        self.yaml_data = self.read_yaml.read_yaml_data(self.yaml_path)
 
     # 点击通讯录图标，快捷进入通讯录页面
     def address_book(self):
@@ -76,3 +78,9 @@ class HomePage(Base):
     # 点击兴趣小组图标，快捷进入兴趣小组页面
     def interest_groups(self):
         self.click(self.yaml_data["home"]["interest_groups"])
+
+
+if __name__ == '__main__':
+    click_obj = HomePage('Chrome', "http://192.168.0.139:18091/pbf_company/index.html#/login?redirect=%2Fhome")
+    click_obj.login("12138002", "123456", "111111")
+    click_obj.address_book()
