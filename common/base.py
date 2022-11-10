@@ -1,5 +1,8 @@
-import os
 import random
+from time import sleep
+
+import pyperclip as pyperclip
+import win32api
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -18,14 +21,6 @@ class Base:
         else:
             raise TypeError("浏览器类型错误，请输入正确的浏览器类型！！！")
         self.wd.get(url)
-        self.wd.maximize_window()
-
-    # 进入网址
-    def get(self, url):
-        self.wd.get(url)
-
-    # 最大化窗口
-    def maximize_window(self):
         self.wd.maximize_window()
 
     # 元素定位，判断使用何种元素定位方法
@@ -177,21 +172,10 @@ class Base:
     def up_file(self, selector, up_file_path):
         return self.locator_element(selector).send_keys(up_file_path)
 
-    # # 文件下载,WebDriver允许我们设置默认的文件下载路径，不同的浏览器设置方式不同
-    # def download_file(self, browser_type, selector):
-    #     if browser_type == "Chrome":
-    #         chrome = webdriver.ChromeOptions
-    #         prefs = {'profile.default_content_settings.popups': 0, 'download.default_directory': os.getcwd()}
-    #         chrome.add_experimental_option('prefs', prefs)
-    #         self.wd = webdriver.Chrome(chrome_options=chrome)
-    #         self.locator_element(selector).click()
-    #     elif browser_type == "Firefox":
-    #         firefox = webdriver.FirefoxProfile()
-    #         firefox.set_preference('browser.download.folderList', 2)
-    #         firefox.set_preference('browser.download.dir', os.getcwd())
-    #         firefox.set_preference('browser.helperApps.neverAsk.saveToDisk', 'binary/octet-stream')
-    #         self.wd = webdriver.Firefox(firefox_profile=firefox)
-    #         self.locator_element(selector).click()
+    def upload_file(self, upload_file_path):
+        pyperclip.copy(upload_file_path)
+        sleep(3)
+        win32api.keybd_event(17, 0, 0, 0)
 
     # 调用JavaScript，可以实现浏览器滚动条的拖动和textarea文本框的输入等操作
     def transfer_js(self, js, args=None):

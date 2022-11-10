@@ -39,7 +39,7 @@ interest_group:
 
 create_interest_group:
   group_name: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[1]/div/div/input
-  cover_image: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[2]/div/div/div/div/div/div/div/div[1]
+  cover_image: n,file
   group_introduction: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[3]/div/div/textarea
   all_departments: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[4]/div/div/div[1]/label[1]/span[2]
   designated_department: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[4]/div/div/div[1]/label[2]/span[2]

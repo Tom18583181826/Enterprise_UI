@@ -17,6 +17,10 @@ class CreateIntGroPage(InterestGroupPage):
         # 输入小组名称
         self.send_keys(self.yaml_data["create_interest_group"]["group_name"], group_name)
         # 上传小组封面图
+        # group_image_path = r"E:\Code\pbf_enterprise_ui\data\image\1.jpg"
+        # js = "document.getElementsByName('file').setAttribute('style', 'display:block !important')"
+        # self.wd.execute_script(js)
+        # self.up_file(self.yaml_data["create_interest_group"]["cover_image"], group_image_path)
         # 输入小组介绍
         self.send_keys(self.yaml_data["create_interest_group"]["group_introduction"], group_introduction)
         # 选择可见范围
@@ -34,9 +38,9 @@ class CreateIntGroPage(InterestGroupPage):
             self.click(self.yaml_data["create_interest_group"]["sales_department"])
             self.click(self.yaml_data["create_interest_group"]["select_department_submit"])
             # 添加管理员
-            ele = self.locator_element(self.yaml_data["create_interest_group"]["admins"])
+            add_admins_ele = self.locator_element(self.yaml_data["create_interest_group"]["admins"])
             js = "arguments[0].scrollIntoView()"
-            self.wd.execute_script(js, ele)
+            self.wd.execute_script(js, add_admins_ele)
             self.click(self.yaml_data["create_interest_group"]["admins"])
             self.click(self.yaml_data["create_interest_group"]["select_admins_type2"])
             self.click(self.yaml_data["create_interest_group"]["join_admins"])
@@ -49,9 +53,9 @@ class CreateIntGroPage(InterestGroupPage):
             self.click(self.yaml_data["create_interest_group"]["join_employee"])
             self.click(self.yaml_data["create_interest_group"]["select_employee_submit"])
             # 添加管理员
-            ele = self.locator_element(self.yaml_data["create_interest_group"]["admins"])
+            add_admins_ele = self.locator_element(self.yaml_data["create_interest_group"]["admins"])
             js = "arguments[0].scrollIntoView()"
-            self.wd.execute_script(js, ele)
+            self.wd.execute_script(js, add_admins_ele)
             self.click(self.yaml_data["create_interest_group"]["admins"])
             self.click(self.yaml_data["create_interest_group"]["select_admins_type3"])
             self.click(self.yaml_data["create_interest_group"]["join_admins"])
@@ -79,4 +83,4 @@ class CreateIntGroPage(InterestGroupPage):
 if __name__ == '__main__':
     test = CreateIntGroPage('Chrome', "http://192.168.0.139:18091/pbf_company/index.html#/login?redirect=%2Fhome")
     test.login("12138002", "123456", "111111")
-    test.create_int_group("小组名称", "小组介绍", scope_type=3)
+    test.create_int_group("小组名称", "小组介绍", scope_type=1)
