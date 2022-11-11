@@ -1,5 +1,7 @@
 import json
+
 from openpyxl import load_workbook
+
 from common.get_json_value_by_key import GetJsonValue
 from common.read_ini import ReadIni
 from data.excel_column import ExcelColumn
@@ -33,7 +35,6 @@ class ReadExcel:
     # 获取参数的value
     def get_case_params_value(self, row):
         if self.get_case_params_key(row):
-            # return ReadJson().read_json_data(self.params_file_path)[self.get_case_params_key(row)]
             read_ini = ReadIni()
             json_path = read_ini.get_json_file_path()
             with open(json_path, encoding="utf8") as file:
@@ -47,7 +48,6 @@ class ReadExcel:
     # 获取预期结果的value
     def get_case_expect_value(self, row):
         if self.get_case_expect_key(row):
-            # return ReadJson().read_json_data(self.expect_file_path)[self.get_case_expect_key(row)]
             read_ini = ReadIni()
             json_path = read_ini.get_json_file_path()
             with open(json_path, encoding="utf8") as file:

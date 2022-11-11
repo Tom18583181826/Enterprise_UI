@@ -1,6 +1,8 @@
 # coding=gbk
 from time import sleep
+
 from selenium.webdriver import Keys
+
 from common.read_ini import ReadIni
 from common.read_yaml import ReadYaml
 from page.home_page import HomePage
@@ -35,6 +37,30 @@ class InterestGroupPage(HomePage):
             self.click(self.yaml_data["interest_group"]["enable_status"])
         else:
             self.click(self.yaml_data["interest_group"]["disable_status"])
+
+    # 点击编辑小组按钮
+    def update_group(self):
+        self.click(self.yaml_data["interest_group"]["update_group"])
+
+    # 点击查看成员按钮
+    def view_members(self):
+        self.click(self.yaml_data["interest_group"]["view_members"])
+
+    # 点击查看帖子按钮
+    def view_post(self):
+        self.click(self.yaml_data["interest_group"]["view_post"])
+
+    # 点击查看活动按钮
+    def view_events(self):
+        self.click(self.yaml_data["interest_group"]["view_events"])
+
+    # 点击启用/停用按钮
+    def status_button(self):
+        self.click(self.yaml_data["interest_group"]["status_button"])
+
+    # 点击删除按钮
+    def delete_button(self):
+        self.click(self.yaml_data["interest_group"]["delete_button"])
 
 
 if __name__ == '__main__':

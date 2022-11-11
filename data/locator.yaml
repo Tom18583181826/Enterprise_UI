@@ -36,6 +36,13 @@ interest_group:
   status_query: x,//*[@id="app"]/div/section/div/div[2]/div/div[2]/div[1]/div[2]/div/input
   enable_status: x,/html/body/div[2]/div[1]/div[1]/ul/li[1]/span
   disable_status: x,/html/body/div[2]/div[1]/div[1]/ul/li[2]/span
+  update_group: x,//*[@id="app"]/div/section/div/div[2]/div/section/section/div/div[4]/div[2]/table/tbody/tr/td[11]/div/div/button[1]/span
+  view_members: x,//*[@id="app"]/div/section/div/div[2]/div/section/section/div/div[4]/div[2]/table/tbody/tr/td[11]/div/div/button[2]/span
+  view_post: x,//*[@id="app"]/div/section/div/div[2]/div/section/section/div/div[4]/div[2]/table/tbody/tr/td[11]/div/div/button[3]/span
+  more_button: x,//*[@id="app"]/div/section/div/div[2]/div/section/section/div/div[4]/div[2]/table/tbody/tr/td[11]/div/div/div/span
+  view_events: x,//*[@id="dropdown-menu-3099"]/li[1]
+  status_button: x,//*[@id="dropdown-menu-3099"]/li[2]
+  delete_button: x,//*[@id="dropdown-menu-3099"]/li[3]
 
 create_interest_group:
   group_name: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[1]/div/div/input
@@ -64,3 +71,36 @@ create_interest_group:
   group_name_null: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[1]/div/div[2]
   cover_image_null: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[2]/div/div[2]
   introduction_null: x,//*[@id="app"]/div/section/div/div/div/div[2]/form/div/div[3]/div/div[2]
+
+member_list:
+  member_name: x,//*[@id="app"]/div/section/div/div/div/div[2]/div[1]/div[1]/input
+  event_name: x,//*[@id="app"]/div/section/div/div/div/div[2]/div[1]/div[2]/input
+  department: x,//*[@id="app"]/div/section/div/div/div/div[2]/div[1]/div[3]/div/input
+  department_1: x,//*[@id="cascader-menu-1434-0-0"]/label/span[1]/span
+  department_2: x,//*[@id="cascader-menu-9153-1-0"]/label/span[1]/span
+  department_3: x,//*[@id="cascader-menu-9153-1-1"]/label/span[1]/span
+  add_member: x,//*[@id="app"]/div/section/div/div/div/div[2]/div[2]/button[1]/span
+  select_member: x,//*[@id="app"]/div/section/div/div/div/div[5]/div/div/div[2]/div/div[1]/div/div[2]
+  add_member_9527015: x,//*[@id="cascader-menu-3547-0-0"]/label/span/span
+  submit_member: x,//*[@id="app"]/div/section/div/div/div/div[5]/div/div/div[3]/span/button[2]/span
+  batch_delete: x,//*[@id="app"]/div/section/div/div/div/div[2]/div[2]/button[2]/span
+  member_details: x,//*[@id="app"]/div/section/div/div/div/section/section/div/div[3]/table/tbody/tr[1]/td[10]/div/div/button[1]/span
+  delete_button: x,//*[@id="app"]/div/section/div/div/div/section/section/div/div[3]/table/tbody/tr[1]/td[10]/div/div/button[2]/span
+
+member_details:
+  post_type: x,//*[@id="pane-topicList"]/div/div[1]/div[1]/div[1]/div/input
+  text_type: x,/html/body/div[4]/div[1]/div[1]/ul/li[1]/span
+  image_type: x,/html/body/div[4]/div[1]/div[1]/ul/li[2]/span
+  text_and_image: x,/html/body/div[4]/div[1]/div[1]/ul/li[3]/span
+  start_time: x,//*[@id="pane-topicList"]/div/div[1]/div[1]/div[2]/input[1]
+  stop_time: x,//*[@id="pane-topicList"]/div/div[1]/div[1]/div[2]/input[2]
+  publication_order: x,//*[@id="pane-topicList"]/div/div[1]/div[1]/div[3]/div/input
+  order_type: x,/html/body/div[4]/div[1]/div[1]/ul/li[1]/span
+  reverse_type: x,/html/body/div[4]/div[1]/div[1]/ul/li[2]/span
+  delete_post_query: x,//*[@id="pane-topicList"]/div/div[1]/div[1]/label/span[1]/span
+  batch_delete: x,//*[@id="pane-topicList"]/div/div[1]/div[2]/button/span
+  view_details: x,//*[@id="pane-topicList"]/div/section/section/div/div[3]/table/tbody/tr/td[8]/div/div/button[1]
+  sticky: x,//*[@id="pane-topicList"]/div/section/section/div/div[3]/table/tbody/tr/td[8]/div/div/button[2]/span
+  delete_button: x,//*[@id="pane-topicList"]/div/section/section/div/div[3]/table/tbody/tr/td[8]/div/div/button[3]/span
+  participated_activities: x,//*[@id="tab-joinActivity"]
+  event_type: x,//*[@id="pane-joinActivity"]/div/div[1]/div[1]/div[1]/div/input

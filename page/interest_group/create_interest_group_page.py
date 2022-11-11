@@ -17,10 +17,6 @@ class CreateIntGroPage(InterestGroupPage):
         # 输入小组名称
         self.send_keys(self.yaml_data["create_interest_group"]["group_name"], group_name)
         # 上传小组封面图
-        # group_image_path = r"E:\Code\pbf_enterprise_ui\data\image\1.jpg"
-        # js = "document.getElementsByName('file').setAttribute('style', 'display:block !important')"
-        # self.wd.execute_script(js)
-        # self.up_file(self.yaml_data["create_interest_group"]["cover_image"], group_image_path)
         # 输入小组介绍
         self.send_keys(self.yaml_data["create_interest_group"]["group_introduction"], group_introduction)
         # 选择可见范围

@@ -1,5 +1,7 @@
 import time
+
 import pytest
+
 from common.get_json_value_by_key import GetJsonValue
 from common.get_log import GetLog
 from common.read_excel import ReadExcel
@@ -8,6 +10,7 @@ from common.read_yaml import ReadYaml
 from page.interest_group.create_interest_group_page import CreateIntGroPage
 
 
+# 获取创建兴趣小组成功的数据
 def get_create_success_data():
     read = ReadExcel()
     success_list = []
@@ -61,4 +64,4 @@ class TestCreateIntGro(CreateIntGroPage):
 
 
 if __name__ == '__main__':
-    pass
+    pytest.main()
