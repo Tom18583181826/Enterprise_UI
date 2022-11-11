@@ -1,8 +1,5 @@
 import random
-from time import sleep
 
-import pyperclip as pyperclip
-import win32api
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -171,11 +168,6 @@ class Base:
     # 上传文件
     def up_file(self, selector, up_file_path):
         return self.locator_element(selector).send_keys(up_file_path)
-
-    def upload_file(self, upload_file_path):
-        pyperclip.copy(upload_file_path)
-        sleep(3)
-        win32api.keybd_event(17, 0, 0, 0)
 
     # 调用JavaScript，可以实现浏览器滚动条的拖动和textarea文本框的输入等操作
     def transfer_js(self, js, args=None):

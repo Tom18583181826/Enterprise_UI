@@ -1,4 +1,7 @@
 # coding=gbk
+import os
+from time import sleep
+
 from common.read_ini import ReadIni
 from common.read_yaml import ReadYaml
 from page.interest_group.interest_group_page import InterestGroupPage
@@ -14,24 +17,44 @@ class CreateIntGroPage(InterestGroupPage):
 
     # 新建兴趣小组
     def create_int_group(self, group_name, group_introduction, scope_type):
+        interest_groups_ele = self.locator_element(self.yaml_data["home"]["interest_groups"])
+        js = "arguments[0].scrollIntoView()"
+        self.wd.execute_script(js, interest_groups_ele)
+        self.click(self.yaml_data["home"]["interest_groups"])
+        self.click(self.yaml_data["interest_group"]["create_group"])
+
         # 输入小组名称
         self.send_keys(self.yaml_data["create_interest_group"]["group_name"], group_name)
         # 上传小组封面图
-        # group_image_path = r"E:\Code\pbf_enterprise_ui\data\image\1.jpg"
-        # js = "document.getElementsByName('file').setAttribute('style', 'display:block !important')"
-        # self.wd.execute_script(js)
-        # self.up_file(self.yaml_data["create_interest_group"]["cover_image"], group_image_path)
+        js = "document.getElementsByName('file')[0].setAttribute('style', 'display:block !important')"
+        self.transfer_js(js)
+        base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        image_path = os.path.join(base_path, r"data\image\1.jpg")
+        self.send_keys(self.yaml_data["create_interest_group"]["cover_image"], image_path)
         # 输入小组介绍
         self.send_keys(self.yaml_data["create_interest_group"]["group_introduction"], group_introduction)
-        # 选择可见范围
+        # 选择可见范围并在可见范围内添加管理员
         if scope_type == 1:
+            # 可见范围选择全部部门
             self.click(self.yaml_data["create_interest_group"]["all_departments"])
             # 添加管理员
-            self.click(self.yaml_data["create_interest_group"]["admins"])
+            add_admins_ele = self.locator_element(self.yaml_data["create_interest_group"]["admins"])
+            js = "arguments[0].click();"
+            self.transfer_js(js, add_admins_ele)
+            # 下一行代码会报错：selenium.common.exceptions.ElementClickInterceptedException:
+            #       Message: element click intercepted:
+            #       Element <>...<> is not clickable at point (635, 791).
+            #             Other element would receive the click: <>...<>
+            # 可能原因：1.存在JavaScript或AJAX调用，元素未被点击
+            #         2.元素未显示在窗口中
+            #         3.元素存在但具有永久叠加
+            #                 上文的解决办法是针对第三种原因的代码
+            # self.click(self.yaml_data["create_interest_group"]["admins"])
             self.click(self.yaml_data["create_interest_group"]["select_admins_type1"])
             self.click(self.yaml_data["create_interest_group"]["join_admins"])
             self.click(self.yaml_data["create_interest_group"]["select_admins_submit"])
         elif scope_type == 2:
+            # 可见范围选择指定部门
             self.click(self.yaml_data["create_interest_group"]["designated_department"])
             self.click(self.yaml_data["create_interest_group"]["select_department"])
             self.click(self.yaml_data["create_interest_group"]["research_and_development_department"])
@@ -40,12 +63,13 @@ class CreateIntGroPage(InterestGroupPage):
             # 添加管理员
             add_admins_ele = self.locator_element(self.yaml_data["create_interest_group"]["admins"])
             js = "arguments[0].scrollIntoView()"
-            self.wd.execute_script(js, add_admins_ele)
+            self.transfer_js(js, add_admins_ele)
             self.click(self.yaml_data["create_interest_group"]["admins"])
             self.click(self.yaml_data["create_interest_group"]["select_admins_type2"])
             self.click(self.yaml_data["create_interest_group"]["join_admins"])
             self.click(self.yaml_data["create_interest_group"]["select_admins_submit"])
         else:
+            # 可见范围选择指定员工
             self.click(self.yaml_data["create_interest_group"]["designated_employees"])
             self.click(self.yaml_data["create_interest_group"]["select_employee"])
             self.click(self.yaml_data["create_interest_group"]["select_employee_9527015"])
@@ -55,13 +79,14 @@ class CreateIntGroPage(InterestGroupPage):
             # 添加管理员
             add_admins_ele = self.locator_element(self.yaml_data["create_interest_group"]["admins"])
             js = "arguments[0].scrollIntoView()"
-            self.wd.execute_script(js, add_admins_ele)
+            self.transfer_js(js, add_admins_ele)
             self.click(self.yaml_data["create_interest_group"]["admins"])
             self.click(self.yaml_data["create_interest_group"]["select_admins_type3"])
             self.click(self.yaml_data["create_interest_group"]["join_admins"])
             self.click(self.yaml_data["create_interest_group"]["select_admins_submit"])
         # 点击提交按钮
         self.click(self.yaml_data["create_interest_group"]["submit"])
+        sleep(5)
 
     # 新建兴趣小组成功
     def create_group_success(self):

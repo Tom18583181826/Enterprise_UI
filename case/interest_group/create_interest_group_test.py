@@ -1,5 +1,7 @@
 import time
+
 import pytest
+
 from common.get_json_value_by_key import GetJsonValue
 from common.get_log import GetLog
 from common.read_excel import ReadExcel
@@ -8,6 +10,7 @@ from common.read_yaml import ReadYaml
 from page.interest_group.create_interest_group_page import CreateIntGroPage
 
 
+# 获取创建兴趣小组成功的数据
 def get_create_success_data():
     read = ReadExcel()
     success_list = []
@@ -20,7 +23,7 @@ def get_create_success_data():
     return success_list
 
 
-class TestCreateIntGro(CreateIntGroPage):
+class TestCreateIntGro:
     now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
 
     read_ini = ReadIni()
@@ -31,6 +34,7 @@ class TestCreateIntGro(CreateIntGroPage):
     def setup(self):
         self.create_test = CreateIntGroPage("Chrome",
                                             "http://192.168.0.139:18091/pbf_company/index.html#/login?redirect=%2Fhome")
+        self.create_test.login("12138002", "123456", "111111")
 
     def teardown(self):
         self.create_test.quit()
@@ -39,14 +43,9 @@ class TestCreateIntGro(CreateIntGroPage):
     @pytest.mark.parametrize("case_id, case_name, params, expect", get_create_success_data())
     def test_create_success(self, case_id, case_name, params, expect):
         try:
-            ele = self.locator_element(self.yaml_data["home"]["interest_groups"])
-            js = "arguments[0].scrollIntoView()"
-            self.wd.execute_script(js, ele)
-            self.click(self.yaml_data["home"]["interest_groups"])
-            self.create_test.create_group()
             group_name = GetJsonValue().get_json_value_by_key(params, "group_name")
             group_introduction = GetJsonValue().get_json_value_by_key(params, "group_introduction")
-            scope_type = GetJsonValue().get_json_value_by_key(params, "scope_type")
+            scope_type = GetJsonValue().get_json_value_by_key(params, "scope_type")[0]
             self.create_test.create_int_group(group_name, group_introduction, scope_type)
             success_text = self.create_test.create_group_success()
             assert expect[0] == success_text
@@ -61,4 +60,4 @@ class TestCreateIntGro(CreateIntGroPage):
 
 
 if __name__ == '__main__':
-    pass
+    pytest.main()
