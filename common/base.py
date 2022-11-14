@@ -165,7 +165,7 @@ class Base:
     def get_page_url(self):
         return self.wd.current_url
 
-    # 上传文件
+    # 上传文件,适用于前端使用input标签实现文件上传的场景
     def up_file(self, selector, up_file_path):
         return self.locator_element(selector).send_keys(up_file_path)
 
