@@ -1,7 +1,9 @@
 import json
+
 from common.read_ini import ReadIni
 
 
+# 读取Json文件，获取测试数据和预期结果的数据
 class ReadJson:
     def read_json_data(self, file_path):
         with open(file_path, encoding="utf8") as file:

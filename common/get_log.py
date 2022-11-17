@@ -5,6 +5,7 @@ from logging import Logger
 from logging import StreamHandler
 
 
+# 获取日志
 class GetLog:
     def get_log(self, log_path):
         log_obj = Logger("test.log")

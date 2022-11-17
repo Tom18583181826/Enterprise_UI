@@ -23,6 +23,7 @@ def get_create_success_data():
     return success_list
 
 
+# 测试创建兴趣小组
 class TestCreateIntGro:
     now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
 

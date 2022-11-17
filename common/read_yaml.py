@@ -1,7 +1,9 @@
 import yaml
+
 from common.read_ini import ReadIni
 
 
+# 读取Yaml文件，获取定位页面元素的类型和值
 class ReadYaml:
     def read_yaml_data(self, file_path):
         with open(file_path, encoding="utf8") as file:

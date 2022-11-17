@@ -5,6 +5,7 @@ import pytest
 from common.read_ini import ReadIni
 
 
+# 运行项目
 class RunnerProject:
     def runner(self):
         now_time = time.strftime("%Y_%m_%d_%H_%M")

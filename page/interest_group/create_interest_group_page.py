@@ -7,6 +7,7 @@ from common.read_yaml import ReadYaml
 from page.interest_group.interest_group_page import InterestGroupPage
 
 
+# 创建兴趣小组页面
 class CreateIntGroPage(InterestGroupPage):
     def __init__(self, browser_type, url):
         super().__init__(browser_type, url)

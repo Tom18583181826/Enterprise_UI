@@ -3,6 +3,7 @@ from common.read_yaml import ReadYaml
 from page.login_page import LoginPage
 
 
+# 首页页面
 class HomePage(LoginPage):
     def __init__(self, browser_type, url):
         super().__init__(browser_type, url)

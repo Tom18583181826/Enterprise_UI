@@ -7,7 +7,9 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
 
+# 测试基类，封装的公共方法
 class Base:
+    # 选择浏览器类型并进入网址
     def __init__(self, browser_type, url):
         if browser_type == "Chrome":
             self.wd = webdriver.Chrome()
@@ -22,7 +24,6 @@ class Base:
 
     # 元素定位，判断使用何种元素定位方法
     def selector_to_locator(self, selector):
-        # selector:选择器        locator:定位器
         selector_type = selector.split(",")[0].strip()
         selector_value = selector.split(",")[1].strip()
         if selector_type == "i" or selector_type == "ID":
@@ -74,7 +75,7 @@ class Base:
     def click(self, selector):
         self.locator_element(selector).click()
 
-    # 提交表单,有些搜索框不提供搜索按钮，而是通过键盘上的回车键完成搜索内容的提交。
+    # 提交表单
     def submit(self, selector):
         self.locator_element(selector).submit()
 
@@ -109,10 +110,6 @@ class Base:
         locator2 = self.selector_to_locator(selector2)
         eles = self.wd.find_element(*locator1).find_elements(*locator2)
         random.choice(eles).click()
-
-    # 获取元素的尺寸
-    def get_element_size(self, selector):
-        return self.locator_element(selector).size
 
     # 获取单个元素文本，可以用于断言
     def get_text(self, selector):

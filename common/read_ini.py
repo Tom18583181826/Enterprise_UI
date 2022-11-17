@@ -2,6 +2,7 @@ import os
 from configparser import ConfigParser
 
 
+# 读取Ini文件，获取文件路径
 class ReadIni:
     def __init__(self):
         self.base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

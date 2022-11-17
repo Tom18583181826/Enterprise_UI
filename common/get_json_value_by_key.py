@@ -1,7 +1,9 @@
 import json
+
 from common.read_ini import ReadIni
 
 
+# 根据键获取对应的值
 class GetJsonValue:
     def get_json_value_by_key(self, in_json, target_key, results=None):
         if results is None:

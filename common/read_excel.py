@@ -7,6 +7,7 @@ from common.read_ini import ReadIni
 from data.excel_column import ExcelColumn
 
 
+# 读取Excel表格，获取测试用例
 class ReadExcel:
     def __init__(self):
         self.read_ini = ReadIni()

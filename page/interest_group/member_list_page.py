@@ -5,6 +5,7 @@ from common.read_yaml import ReadYaml
 from page.interest_group.interest_group_page import InterestGroupPage
 
 
+# 成员列表页面
 class MemberListPage(InterestGroupPage):
     def __init__(self, browser_type, url):
         super().__init__(browser_type, url)

@@ -8,6 +8,7 @@ from common.read_yaml import ReadYaml
 from page.home_page import HomePage
 
 
+# 兴趣小组页面
 class InterestGroupPage(HomePage):
     def __init__(self, browser_type, url):
         super().__init__(browser_type, url)

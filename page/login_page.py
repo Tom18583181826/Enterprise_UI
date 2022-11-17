@@ -3,6 +3,7 @@ from common.read_ini import ReadIni
 from common.read_yaml import ReadYaml
 
 
+# 登录页面
 class LoginPage(Base):
     def __init__(self, browser_type, url):
         super().__init__(browser_type, url)
