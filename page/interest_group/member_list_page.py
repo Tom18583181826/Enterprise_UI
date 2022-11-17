@@ -1,10 +1,11 @@
 from selenium.webdriver import Keys
 
-from common.read_ini import ReadIni
-from common.read_yaml import ReadYaml
+from common.read_elements_file import ReadYaml
+from common.read_path_file import ReadIni
 from page.interest_group.interest_group_page import InterestGroupPage
 
 
+# 成员列表页面
 class MemberListPage(InterestGroupPage):
     def __init__(self, browser_type, url):
         super().__init__(browser_type, url)

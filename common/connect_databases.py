@@ -2,6 +2,7 @@ import pymysql
 from pymysql import cursors
 
 
+# 连接数据库
 class ConnectDatabases:
     def __init__(self, host="127.0.0.1", user="root", password="mima=1509957150", database="guest", charset="utf8",
                  port=3306):

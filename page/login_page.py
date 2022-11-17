@@ -1,13 +1,13 @@
 from common.base import Base
-from common.read_ini import ReadIni
-from common.read_yaml import ReadYaml
+from common.read_path_file import ReadPathFile
 
 
+# 登录页面
 class LoginPage(Base):
     def __init__(self, browser_type, url):
         super().__init__(browser_type, url)
-        self.read_ini = ReadIni()
-        self.yaml_path = self.read_ini.get_yaml_file_path()
+        self.file_path = ReadPathFile()
+        self.elements_path = self.file_path.get_elements_file_path()
         self.read_yaml = ReadYaml()
         self.yaml_data = self.read_yaml.read_yaml_data(self.yaml_path)
 

@@ -1,7 +1,4 @@
-import json
-from common.read_ini import ReadIni
-
-
+# 根据键获取对应的值
 class GetJsonValue:
     def get_json_value_by_key(self, in_json, target_key, results=None):
         if results is None:
@@ -16,11 +13,3 @@ class GetJsonValue:
             for result_data in in_json:
                 self.get_json_value_by_key(result_data, target_key, results=results)
         return results
-
-
-if __name__ == '__main__':
-    read_ini = ReadIni()
-    json_path = read_ini.get_json_file_path()
-    with open(json_path, encoding="utf8") as file:
-        result = GetJsonValue().get_json_value_by_key(json.load(file), "login_success_p")
-        print(result)

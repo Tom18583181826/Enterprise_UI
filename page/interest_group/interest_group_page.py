@@ -3,11 +3,12 @@ from time import sleep
 
 from selenium.webdriver import Keys
 
-from common.read_ini import ReadIni
-from common.read_yaml import ReadYaml
+from common.read_elements_file import ReadYaml
+from common.read_path_file import ReadIni
 from page.home_page import HomePage
 
 
+# 兴趣小组页面
 class InterestGroupPage(HomePage):
     def __init__(self, browser_type, url):
         super().__init__(browser_type, url)

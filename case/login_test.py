@@ -1,9 +1,11 @@
 import time
+
 import pytest
+
 from common.get_json_value_by_key import GetJsonValue
 from common.get_log import GetLog
-from common.read_excel import ReadExcel
-from common.read_ini import ReadIni
+from common.read_case_file import ReadExcel
+from common.read_path_file import ReadIni
 from page.login_page import LoginPage
 
 
@@ -33,6 +35,7 @@ def get_failed_data():
     return failed_list
 
 
+# 测试登录
 class TestLogin:
     now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
 

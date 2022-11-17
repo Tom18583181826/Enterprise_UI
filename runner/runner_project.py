@@ -2,9 +2,10 @@ import time
 
 import pytest
 
-from common.read_ini import ReadIni
+from common.read_path_file import ReadIni
 
 
+# 运行项目
 class RunnerProject:
     def runner(self):
         now_time = time.strftime("%Y_%m_%d_%H_%M")

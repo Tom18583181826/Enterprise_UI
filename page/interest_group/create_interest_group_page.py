@@ -2,11 +2,12 @@
 import os
 from time import sleep
 
-from common.read_ini import ReadIni
-from common.read_yaml import ReadYaml
+from common.read_elements_file import ReadYaml
+from common.read_path_file import ReadIni
 from page.interest_group.interest_group_page import InterestGroupPage
 
 
+# 创建兴趣小组页面
 class CreateIntGroPage(InterestGroupPage):
     def __init__(self, browser_type, url):
         super().__init__(browser_type, url)

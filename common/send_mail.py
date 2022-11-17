@@ -1,9 +1,11 @@
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from common.read_ini import ReadIni
+
+from common.read_path_file import ReadIni
 
 
+# 发送邮件
 class SendMail(object):
     def send_mail(self, path):
         try:

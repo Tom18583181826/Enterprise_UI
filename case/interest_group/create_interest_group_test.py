@@ -4,15 +4,15 @@ import pytest
 
 from common.get_json_value_by_key import GetJsonValue
 from common.get_log import GetLog
-from common.read_excel import ReadExcel
-from common.read_ini import ReadIni
-from common.read_yaml import ReadYaml
+from common.read_case_file import ReadCaseFile
+from common.read_elements_file import ReadYaml
+from common.read_path_file import ReadIni
 from page.interest_group.create_interest_group_page import CreateIntGroPage
 
 
 # 获取创建兴趣小组成功的数据
 def get_create_success_data():
-    read = ReadExcel()
+    read = ReadCaseFile()
     success_list = []
     for row in range(8, 9):
         case_id = read.get_case_id(row)
@@ -23,6 +23,7 @@ def get_create_success_data():
     return success_list
 
 
+# 测试创建兴趣小组
 class TestCreateIntGro:
     now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
 
