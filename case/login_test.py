@@ -4,14 +4,14 @@ import pytest
 
 from common.get_json_value_by_key import GetJsonValue
 from common.get_log import GetLog
-from common.read_case_file import ReadExcel
-from common.read_path_file import ReadIni
+from common.read_case_file import ReadCaseFile
+from common.read_path_file import ReadPathFile
 from page.login_page import LoginPage
 
 
 # 获取登录成功用例的数据
 def get_success_data():
-    read = ReadExcel()
+    read = ReadCaseFile()
     success_list = []
     for row in range(2, 3):
         case_id = read.get_case_id(row)
@@ -24,7 +24,7 @@ def get_success_data():
 
 # 获取登录失败用例的数据
 def get_failed_data():
-    read = ReadExcel()
+    read = ReadCaseFile()
     failed_list = []
     for row in range(3, 8):
         case_id = read.get_case_id(row)
@@ -58,8 +58,8 @@ class TestLogin:
             assert expect[0] == success_text
         except AssertionError:
             self.login_test.get_screenshot(
-                ReadIni().get_screenshot_file_path() + "screenshot_{}.png".format(self.now_time))
-            log_obj = GetLog().get_log(ReadIni().get_log_file_path() + "login{}.log".format(self.now_time))
+                ReadPathFile().get_screenshot_file_path() + "screenshot_{}.png".format(self.now_time))
+            log_obj = GetLog().get_log(ReadPathFile().get_log_file_path() + "login{}.log".format(self.now_time))
             log_obj.error("用例{}---{}---执行失败！".format(case_id, case_name))
             raise AssertionError("用例{}---{}---执行失败！".format(case_id, case_name))
         finally:
@@ -90,8 +90,8 @@ class TestLogin:
                 assert expect[0] == fail_text
         except AssertionError:
             self.login_test.get_screenshot(
-                ReadIni().get_screenshot_file_path() + "screenshot_{}.png".format(self.now_time))
-            log_obj = GetLog().get_log(ReadIni().get_log_file_path() + "login{}.log".format(self.now_time))
+                ReadPathFile().get_screenshot_file_path() + "screenshot_{}.png".format(self.now_time))
+            log_obj = GetLog().get_log(ReadPathFile().get_log_file_path() + "login{}.log".format(self.now_time))
             log_obj.error("用例{}---{}---执行失败！".format(case_id, case_name))
             raise AssertionError("用例{}---{}---执行失败！".format(case_id, case_name))
         finally:

@@ -1,4 +1,5 @@
 from common.base import Base
+from common.read_elements_file import ReadElementsFile
 from common.read_path_file import ReadPathFile
 
 
@@ -8,43 +9,43 @@ class LoginPage(Base):
         super().__init__(browser_type, url)
         self.file_path = ReadPathFile()
         self.elements_path = self.file_path.get_elements_file_path()
-        self.read_yaml = ReadYaml()
-        self.yaml_data = self.read_yaml.read_yaml_data(self.yaml_path)
+        self.elements_data = ReadElementsFile()
+        self.elements = self.elements_data.read_elements_data(self.elements_path)
 
     # 登录流程
     def login(self, username, password, verify_code):
         # 输入用户名
-        self.send_keys(self.yaml_data["login"]["login_name"], username)
+        self.send_keys(self.elements["login"]["login_name"], username)
         # 输入密码
-        self.send_keys(self.yaml_data["login"]["password"], password)
+        self.send_keys(self.elements["login"]["password"], password)
         # 输入验证码
-        self.send_keys(self.yaml_data["login"]["verify_code"], verify_code)
+        self.send_keys(self.elements["login"]["verify_code"], verify_code)
         # 点击登录按钮
-        self.click(self.yaml_data["login"]["submit"])
+        self.click(self.elements["login"]["submit"])
 
     # 登陆成功
     def get_login_success(self):
-        return self.get_text(self.yaml_data["login"]["login_success"])
+        return self.get_text(self.elements["login"]["login_success"])
 
     # 用户名为空导致登录失败
     def get_username_null_fail(self):
-        return self.get_text(self.yaml_data["login"]["username_null"])
+        return self.get_text(self.elements["login"]["username_null"])
 
     # 用户名错误导致登录失败
     def get_username_error_fail(self):
-        return self.get_text(self.yaml_data["login"]["username_error"])
+        return self.get_text(self.elements["login"]["username_error"])
 
     # 密码为空导致登录失败
     def get_password_null_fail(self):
-        return self.get_text(self.yaml_data["login"]["password_null"])
+        return self.get_text(self.elements["login"]["password_null"])
 
     # 密码错误导致登录失败
     def get_password_error_fail(self):
-        return self.get_text(self.yaml_data["login"]["password_error"])
+        return self.get_text(self.elements["login"]["password_error"])
 
     # 验证码为空导致登录失败
     def get_verify_null_fail(self):
-        return self.get_text(self.yaml_data["login"]["verify_code_null"])
+        return self.get_text(self.elements["login"]["verify_code_null"])
 
 
 if __name__ == '__main__':

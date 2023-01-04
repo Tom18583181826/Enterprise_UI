@@ -36,9 +36,9 @@ class ReadCaseFile:
     # 获取参数的value
     def get_case_params_value(self, row):
         if self.get_case_params_key(row):
-            read_ini = ReadIni()
-            json_path = read_ini.get_json_file_path()
-            with open(json_path, encoding="utf8") as file:
+            file_path = ReadPathFile()
+            data_file_path = file_path.get_data_file_path()
+            with open(data_file_path, encoding="utf8") as file:
                 result = GetJsonValue().get_json_value_by_key(json.load(file), self.get_case_params_key(row))
                 return result
 
@@ -49,8 +49,8 @@ class ReadCaseFile:
     # 获取预期结果的value
     def get_case_expect_value(self, row):
         if self.get_case_expect_key(row):
-            read_ini = ReadIni()
-            json_path = read_ini.get_json_file_path()
-            with open(json_path, encoding="utf8") as file:
+            file_path = ReadPathFile()
+            data_file_path = file_path.get_data_file_path()
+            with open(data_file_path, encoding="utf8") as file:
                 result = GetJsonValue().get_json_value_by_key(json.load(file), self.get_case_expect_key(row))
                 return result
