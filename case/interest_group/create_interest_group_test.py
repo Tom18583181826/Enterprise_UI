@@ -9,19 +9,6 @@ from common.read_path_file import ReadPathFile
 from page.interest_group.create_interest_group_page import CreateIntGroPage
 
 
-# 获取创建兴趣小组成功的数据
-def get_create_success_data():
-    read = ReadCaseFile()
-    success_list = []
-    for row in range(8, 9):
-        case_id = read.get_case_id(row)
-        case_name = read.get_case_name(row)
-        params = read.get_case_params_value(row)
-        expect = read.get_case_expect_value(row)
-        success_list.append((case_id, case_name, params, expect))
-    return success_list
-
-
 # 测试创建兴趣小组
 class TestCreateIntGro:
     now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
@@ -33,6 +20,18 @@ class TestCreateIntGro:
 
     def teardown(self):
         self.create_test.quit()
+
+    # 获取创建兴趣小组成功的数据
+    def get_create_success_data(self):
+        read = ReadCaseFile()
+        success_list = []
+        for row in range(8, 9):
+            case_id = read.get_case_id(row)
+            case_name = read.get_case_name(row)
+            params = read.get_case_params_value(row)
+            expect = read.get_case_expect_value(row)
+            success_list.append((case_id, case_name, params, expect))
+        return success_list
 
     # 测试创建兴趣小组成功的用例
     @pytest.mark.parametrize("case_id, case_name, params, expect", get_create_success_data())
