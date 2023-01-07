@@ -2,14 +2,14 @@ import time
 
 import pytest
 
-from common.read_path_file import ReadIni
+from common.read_path_file import ReadPathFile
 
 
 # 运行项目
 class RunnerProject:
     def runner(self):
         now_time = time.strftime("%Y_%m_%d_%H_%M")
-        report_path = ReadIni().get_report_file_path()
+        report_path = ReadPathFile().get_report_file_path()
 
         pytest.main([r"E:\Code\pbf_enterprise_ui\case\interest_group\create_interest_group_test.py",
                      r"--html=E:\Code\pbf_enterprise_ui\result\report\report{}.html".format(
