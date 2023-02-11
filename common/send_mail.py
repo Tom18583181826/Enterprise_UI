@@ -2,8 +2,6 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from common.read_path_file import ReadIni
-
 
 # 发送邮件
 class SendMail(object):
@@ -41,10 +39,3 @@ class SendMail(object):
             print("邮件发送成功！！！")
         except smtplib.SMTPException:
             print("邮件发送失败！！！")
-
-
-if __name__ == '__main__':
-    read_ini = ReadIni()
-    report_file_path = read_ini.get_report_file_path()
-    test_send = SendMail()
-    test_send.send_mail(report_file_path)
